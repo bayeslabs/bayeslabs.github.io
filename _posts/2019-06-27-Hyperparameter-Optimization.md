@@ -22,7 +22,7 @@ where $T$ is the number of itterations, $s_0$ contains initial weights and initi
 
 
 
-{% include image.html url="/assets/img/shell.png" description="This is a crazy shell." width =10 %}
+{% include image.html url="/assets/img/shell.png" description="This is a crazy shell." width="10"  %}
  
 let's take a simple example training a neural network by gradient descent with momentum(GDM), in which case $s_t = (v_t, w_t)$ and, 
 

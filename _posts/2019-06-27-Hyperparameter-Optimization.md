@@ -17,7 +17,7 @@ $$ s_t = \Phi_t(s_{t-1}, \lambda),    t = 1,...,T $$
 
 where $T$ is the number of itterations, $s_0$ contains initial weights and initial accessory variables and $t \in {1,...,T}$ is the $t$-th step of the optimization algorithm,i.e. on mini-batch $t$. Finally, $\lambda$ $\in$ $R^m$ is the vector of hyperparameters that we wish to tune.
 
-{% include image.html align="center" url="/assets/img/shell.png" description="This is a crazy shell." width="300" %}
+{% include image.html align="center" url="https://blog.nanonets.com/content/images/2019/03/HPO1.png" description="This is a crazy shell."  %}
  
 let's take a simple example training a neural network by gradient descent with momentum(GDM), in which case $s_t = (v_t, w_t)$ and, 
 

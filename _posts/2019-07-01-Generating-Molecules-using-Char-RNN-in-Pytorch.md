@@ -24,12 +24,18 @@ What makes Recurrent Networks so special? The core reason that recurrent nets ar
 
 However, in models for natural language processing, the input and output of the model are usually sequences of single letters, strings or words. We therefore employ the  <b>SMILES<b>  ( <b>S<b>  implified Molecular Input Line Entry System) format are the type of chemical notation that helps us to represent molecules and easy to used by the computers. It is a simple string representation of molecules, which encodes molecular graphs compactly as human-readable strings. SMILES is a formal grammar which describes molecules with an alphabet of characters, for example c and C for aromatic and aliphatic carbon atoms, O for oxygen, and −, =, and # for single, double, and triple bonds (see Figure 2).To indicate rings, a number is introduced at the two atoms where the ring is closed. For example, benzene in aromatic SMILES notation would be c1ccccc1.
                     image.....smile ....................................
- 
-      Figure 2. Examples of molecule and It's SMILES representation. To correctly create smiles, the model has to learn long-term                                  dependencies, for example, to close rings (indicated by numbers) and brackets.
+ Figure 2. Examples of molecule and It's SMILES representation. To correctly create smiles, the model has to learn long-term                                  dependencies, for example, to close rings (indicated by numbers) and brackets.
  <b>Generating SMILES using RNN's:<b>  I'll be showing you how I implemented my recurrent neural network in Pytorch. I trained it using the ChEMBL smiles Dataset ,which contains 2M smiles,and it is a manually curated database of bio-active drug-like molecules.
   
   <b> Part 1: Importing libraries and data preprocessing-<b>
+        First, we import pytorch, the deep learning library we'll be using,also import nn (pytorch's neural network library) and                        torch.nn.functional, which includes non-linear functions like ReLu and sigmoid.
+     Let's load the Data file and name it as text-
  
-       First, we import pytorch, the deep learning library we'll be using,also import nn (pytorch's neural network library) and                        torch.nn.functional, which includes non-linear functions like ReLu and sigmoid.
-     Let's load the Data file and name it as text
+         import numpy as np
+         import torch
+         from torch import nn
+         import torch.nn.functional as F
+         # Open chembl text file and read in data as `text`
+         with open('chembl_smiles.txt ', 'r') as f:
+            text = f.read()
           

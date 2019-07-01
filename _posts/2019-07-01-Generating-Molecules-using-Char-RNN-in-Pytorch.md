@@ -5,12 +5,13 @@ Before you dig into details of Recurrent Neural networks, if you are a Beginner 
 
 In this post ,I am implementing a RNN model with Pytorch to generate SMILES.
 
-Now in this we will learn
+Now in this we will learn 
 <ul>
 <li> Why/what are Recurrent Neural Networks?</li>
 <li> Character level RNN model</li>
 <li> RNN for Molecules (SMILES) Generation </li>
 <li> Generating SMILES using RNN's</li>
 </ul>
-
+<b>Recurrent Neural Networks:</b> The idea behind RNN's is to make use of sequential information. RNN's are used for sequential data, like audio or sentences, where the order of the data plays an important role.
+What makes Recurrent Networks so special? The core reason that recurrent nets are more exciting is that they allow us to operate over sequences of vectors:
  

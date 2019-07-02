@@ -63,7 +63,7 @@ However, in models for natural language processing, the input and output of the 
             one_hot = one_hot.reshape((*arr.shape, n_labels))
     
       return one_hot
-     ```
+  ```
      We will usually want to feed training data in batches to speed up the training process,so defining method to make mini-batches for         training.
     
   ```python

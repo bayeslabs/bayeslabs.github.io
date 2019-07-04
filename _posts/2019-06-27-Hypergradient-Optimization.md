@@ -1,8 +1,9 @@
 ---
 layout: post
-title:  "Hyperparameter Optimization"
+title:  "Hypergradient Optimization"
 date: 2019-06-27
 author: nandan_prince
+excerpt: "A brief introduction about the Hypergradient optimization for Hyperparameter optimization"
 comments: True
 mathjax: True
 ---
@@ -17,8 +18,6 @@ We focus on training procedures based on the optimization of an objective functi
 $$ s_t = \Phi_t(s_{t-1}, \lambda),    t = 1,...,T $$
 
 where $T$ is the number of itterations, $s_0$ contains initial weights and initial accessory variables and $t \in {1,...,T}$ is the $t$-th step of the optimization algorithm,i.e. on mini-batch $t$. Finally, $\lambda$ $\in$ $R^m$ is the vector of hyperparameters that we wish to tune.
-
-{% include image.html align="center" url="https://blog.nanonets.com/content/images/2019/03/HPO1.png" description="Random search and Grid Search for Hyperparameter Optimization."  %}
  
 let's take a simple example training a neural network by gradient descent with momentum(GDM), in which case $s_t = (v_t, w_t)$ and, 
 

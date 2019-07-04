@@ -2,7 +2,7 @@
 layout: post
 title:  "Hyperparameter Optimization"
 date: 2019-06-27
-aouthor: "Nandan prince"
+author: "Nandan prince"
 comments: True
 mathjax: True
 ---

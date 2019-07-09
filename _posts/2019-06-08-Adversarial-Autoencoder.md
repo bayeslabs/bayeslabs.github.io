@@ -44,7 +44,7 @@ this is not better for the model. So now we want another method which helps us t
 
 To overcome this, we use Wasserstein distance, which is also called earth mover distance.
 I am not going deep in this concept because then blog will we too large. In reference, I will provide you with a link if we want to know the concepts of Wasserstein distance
-<a href="https://www.youtube.com/watchv=_z9bdayg8ZI&list=PLdxQ7SoCLQANQ9fQcJ0wnnTzkFsJHlWEj&index=34" target="_blank">Wasserstein distance</a>. 
+<a href="https://www.youtube.com/watch?v=_z9bdayg8ZI&t=1356s" target="_blank">Wasserstein distance</a>. 
 When we use Wasserstein distance in GAN, we called GAN as WGAN.<br/>
 
 **Adversarial Autoencoder**<br/>

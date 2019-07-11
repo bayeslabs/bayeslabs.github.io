@@ -7,7 +7,6 @@ mathjax: True
 ---
 
 Molecular structure generation is one of the major part of material or drug discovery.This task involves continuous embedding and generation of molecular graphs.
-
 Our junction tree variational autoencoder generates molecular graphs in two phases:<br>
 (i)First generating a tree-structured scaffold over chemical substructures<br>
 (ii)Combining them into a molecule with a graph message passing network.

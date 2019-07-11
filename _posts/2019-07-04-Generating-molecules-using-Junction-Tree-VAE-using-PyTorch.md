@@ -6,8 +6,7 @@ comments: True
 mathjax: True
 ---
 
-<h2>Introduction</h2>
-We attempt to automate the design of molecules.This task involves continuous embedding and generation of molecular graphs.
+Molecular structure generation is one of the major part of material or drug discovery.This task involves continuous embedding and generation of molecular graphs.
 
 Our junction tree variational autoencoder generates molecular graphs in two phases:<br>
 (i)First generating a tree-structured scaffold over chemical substructures<br>

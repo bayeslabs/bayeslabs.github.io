@@ -89,4 +89,4 @@ Where $ Q(s, a)$ expected reward for an action <i><b>a</b></i> in state <i><b>s<
 To get a more detailed explanation of policy gradient refer to this <a href="https://towardsdatascience.com/an-intuitive-explanation-of-policy-gradient-part-1-reinforce-aa4392cbfd3c">blog</a>.
 
 
-In the next <a href = "https://haroon03.github.io/2019/07/04/ORGAN-Part-II.html">blog</a> we will implement the above discussed theories to generate a desired molecule
+In the next <a href = "https://blog.bayeslabs.co/2019/07/04/Objective-Reinforced-Genarative-Adversarial-Network(Part-II).html">blog</a> we will implement the above discussed theories to generate a desired molecule

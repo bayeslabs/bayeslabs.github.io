@@ -3,6 +3,7 @@ layout: post
 title:  "Learning the regulatory code of the genome using Basset"
 date: 2019-07-12
 author : muni_nihitha
+excerpt : "This is a brief explanation about the Basset model along with its implementation"
 comments: True
 mathjax: True
 ---

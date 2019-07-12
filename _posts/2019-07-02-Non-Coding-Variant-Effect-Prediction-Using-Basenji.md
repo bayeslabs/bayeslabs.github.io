@@ -3,7 +3,7 @@ layout: post
 title:  "Non Coding Variant Effect Prediction using Basenji"
 date: 2019-07-02
 author : muni_nihitha
-excerpt : "Predicting the causal variants is of one the challenging problem.This blog discusses the model, Basenji which is able to prioritize the causal variants."
+excerpt : "Predicting the causal variants is of one the challenging problems.This blog discusses the model, Basenji which is able to prioritize the causal variants."
 comments: True
 mathjax: True
 ---

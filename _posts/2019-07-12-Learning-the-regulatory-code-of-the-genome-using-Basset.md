@@ -2,6 +2,7 @@
 layout: post
 title:  "Learning the regulatory code of the genome using Basset"
 date: 2019-07-12
+author : muni_nihitha
 comments: True
 mathjax: True
 ---

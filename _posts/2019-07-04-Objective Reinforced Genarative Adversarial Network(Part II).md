@@ -2,6 +2,8 @@
 layout: post
 title:  "Objective Reinforced Genarative Adversarial Network(Part II)"
 date: 2019-07-04
+author: haroon_nazir
+excerpt: In this blog we discuss the technicalities of the ORGAN model used to generate molecules with desired propertes.
 comments: True
 mathjax: True
 ---

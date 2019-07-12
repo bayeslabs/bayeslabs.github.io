@@ -125,4 +125,4 @@ print(out)
 Here, we need to first, one-hot encode the test sequence and  then reshape the numpy array such that it is compatible with the shape of the input for the model and feed it to the model for the model to make predictions of the DNA accessibility.
 
 <h2><b>Summary:</b></h2>
-Given a SNP pair, by these predicted chromatin accessibility values, we can calculate the difference between the accessibilities of the variants in the two alleles and this difference can be ranked which could be useful for predicting the causal variants.
+Given a SNP pair, by these predicted chromatin accessibility values, we can calculate the difference between the accessibilities of the variants in the two alleles and this difference can be ranked which could be useful for predicting the causal variants. 

@@ -333,4 +333,4 @@ For breif expalinations of the reward metrics used in this model here are some l
 
 <a href = "https://peter-ertl.com/reprints/Ertl-JCIM-48-68-2008.pdf">Natural Product Likeness Score</a>
 
-You can find the complete code at <a href=" github link ">github</a>.
+You can find the complete code at <a href="https://github.com/bayeslabs/genmol/tree/master/genmol">github</a>.

@@ -5,7 +5,7 @@ date: 2019-06-05
 mathjax: True
 ---
 In this blog, we will be using **Variational AutoEncoder** for molecular strucuture generation.
-If you don’t know about VAE, please visit <a href="/2019/06/04/All-you-need-to-know-about-Vae-(Part-1).html" target="_blank">VAE</a> to understand  better.<br/>
+If you don’t know about VAE, please visit <a href="/2019/06/04/All-you-need-to-know-about-Vae.html" target="_blank">VAE</a> to understand  better.<br/>
 
 Molecular generation is generating new molecules that has a valid structure. In this model, we generate a similar molecule as input molecules.input of this model is smiles, and the output is a similar type of smiles as of input. We use pytorch to implement VAE in a molecular generation.<br/>
 <br/>

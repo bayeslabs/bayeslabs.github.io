@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "All you need to know about Variational AutoEncoder(Part-1)"
+title: "All you need to know about Variational AutoEncoder"
 date: 2019-06-04
 mathjax: True
 ---

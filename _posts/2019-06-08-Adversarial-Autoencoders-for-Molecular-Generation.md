@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Adversarial Autoencoder"
+title: "Adversarial Autoencoders for Molecular generation"
 date: 2019-06-08
 mathjax: True
 ---

@@ -2,12 +2,11 @@
 layout: post
 title:  "Generating Molecules using CharRNN "
 date: 2019-07-04
-excerpt: "In this blog we will be discussing about RNN's and How the character RNN algorithms can be used in Molecular Structure Generation"
 author: sunita_choudhary
 comments: True
 mathjax: True
 ---
-
+>In this blog we will be discussing about RNN's and How the character RNN algorithms can be used in Molecular Structure Generation.
 
 Before you dig into details of Recurrent Neural networks, if you are a Beginner I suggest you to read about RNN.
 Note: To go through the article, you must have basic knowledge of neural networks and how Pytorch (a deep learning library) works. 

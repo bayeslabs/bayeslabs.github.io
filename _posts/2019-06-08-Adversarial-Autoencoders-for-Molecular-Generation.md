@@ -5,12 +5,12 @@ date: 2019-06-08
 mathjax: True
 ---
 
-In my previous two blogs, you see how vae helps to create <a href="/2019/06/05/All-you-need-to-know-about-Vae-(Part-2).html#SMILES" target="_blank">SMILES</a>(text generation) of a similar kind.Before coming into the Adversarial Autoencoder lets see some drawbacks of Variational autoencoder(VAE) there are many models which work similarly to the VAE. They also helps us to understand the similar input generation. But what's the difference between VAE and others it they both work on the same things.Why we use other models instead of VAE for similar input generation.<br/>
+In my previous two blogs, you see how vae helps to create <a href="/2019/06/05/VAE-Molgen.html#SMILES" target="_blank">SMILES</a>(text generation) of a similar kind.Before coming into the Adversarial Autoencoder lets see some drawbacks of Variational autoencoder(VAE) there are many models which work similarly to the VAE. They also helps us to understand the similar input generation. But what's the difference between VAE and others it they both work on the same things.Why we use other models instead of VAE for similar input generation.<br/>
 
 Today we will see about drawbacks of VAE and how Generative adversarial network and Adversarial autoencoder is better than Variational autoencoder.<br/>
 The assumption we took in VAE is that we used another distribution which is Gaussian distribution and imposed this distribution to our latent vector distribution because we don’t know the distribution of input data and to do this we use KL-divergence to make the similar distribution.<br/>
 
-To know more about VAE and KL-divergence please refer to my previous <a href="/2019/06/04/All-you-need-to-know-about-Vae-(Part-1).html" target="_blank">blogs</a><br/>
+To know more about VAE and KL-divergence please refer to my previous <a href="/2019/06/04/All-you-need-to-know-about-Vae.html" target="_blank">blogs</a><br/>
 we take assumption when using KL-divergence that the two distribution will overlap each other.but what if they don’t overlap each other.
 if this not happen then our KL-divergence gives the $\infty$ value which gives us some wired results and non trackable. lets understand this by an simple example
 lets say $Q(x)$ and $P(x)$ be the probability distribution function and we want to measure the KL-divergence of these distributions.<br/>
@@ -44,7 +44,7 @@ When we use Wasserstein distance in GAN, we called GAN as WGAN.<br/>
 
 **Adversarial Autoencoder**<br/>
 An adversarial autoencoder is a type Generative adversarial network in which we have an autoencoder and a discriminator.<br/>
-In Autoencoder part we have <a href="/2019/06/04/All-you-need-to-know-about-Vae-(Part-1).html#encoder" target="_blank">Encoder</a>, <a href="/2019/06/04/All-you-need-to-know-about-Vae-(Part-1).html#Decoder" target="_blank">Decoder</a> and <a href="/2019/06/04/All-you-need-to-know-about-Vae-(Part-1).html#latent vector" target="_blank">Latent vector</a>. Please click on the respective link if you want to know about these terms.<br/>
+In Autoencoder part we have <a href="/2019/06/04/All-you-need-to-know-about-Vae.html#encoder" target="_blank">Encoder</a>, <a href="/2019/06/04/All-you-need-to-know-about-Vae.html#Decoder" target="_blank">Decoder</a> and <a href="/2019/06/04/All-you-need-to-know-about-Vae.html#latent vector" target="_blank">Latent vector</a>. Please click on the respective link if you want to know about these terms.<br/>
 auto-encoder try to give output as same as the input, but we want to generate a similar input, not same input so what we do is we take a sample from latent vector and put into the decoder to give similar output, but the problem is we don’t know the distribution of latent vector.<br/>
 So we take a random distribution whose distribution we know and try to impose this distribution into latent distribution and remember to impose this distribution into the latent distribution we use JSD divergence because we see JSD is better than KL-divergence.<br/>
 

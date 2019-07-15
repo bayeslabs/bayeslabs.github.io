@@ -2,6 +2,7 @@
 layout: post
 title: "All you need to know about Variational AutoEncoder"
 excerpt: " Variational AutoEncoders are being widely used in generative models from the day they came into existence. In this blog we tried to give an intuitive understanding of Variational AutoEncoders"
+author: shubham_patel
 date: 2019-06-04
 mathjax: True
 ---

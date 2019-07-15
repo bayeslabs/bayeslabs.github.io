@@ -7,7 +7,7 @@ excerpt: In this blog we discuss the technicalities of the ORGAN model used to g
 comments: True
 mathjax: True
 ---
-This blog is in continuation with the <a href = "https://haroon03.github.io/2019/07/03/Objective-Reinforced-Generative-Adversarial-Network-(Part-I).html">ORGAN Part I</a>, where I have thoroughly discussed about Generative Adversarial Network(GAN) and ORGAN. So, here I will walk you through the code of ORGAN to give you an overview.
+This blog is in continuation with the <a href = "/2019/07/03/Objective-Reinforced-Generative-Adversarial-Network-(Part-I).html">ORGAN Part I</a>, where I have thoroughly discussed about Generative Adversarial Network(GAN) and ORGAN. So, here I will walk you through the code of ORGAN to give you an overview.
 
 <h3>ORGAN: MODEL</h3>
 

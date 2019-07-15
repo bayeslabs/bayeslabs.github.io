@@ -3,11 +3,10 @@ layout: post
 title:  "Learning the regulatory code of the genome using Basset"
 date: 2019-07-12
 author : muni_nihitha
-excerpt : "Convolutional neural networks are being widely used in understanding the DNA sequence data. In this blog we will be discussing one of such models(Basset model) along with its implementation"
 comments: True
 mathjax: True
 ---
-
+>Convolutional neural networks are being widely used in understanding the DNA sequence data. In this blog we will be discussing one of such models(Basset model) along with its implementation.
 <h2><b>Introduction:</b></h2>
 
 <p>

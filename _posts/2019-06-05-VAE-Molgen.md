@@ -2,10 +2,10 @@
 layout: post
 title: "Molecular Structure Generation using VAE"
 author: shubham_patel
-excerpt: "This post gives detailed explanation about using Variational Autoencoders for Molecular structure Generation. By the end of this post you will be able to create your own VAE or moleculare generation"
 date: 2019-06-05
 mathjax: True
 ---
+>This post gives detailed explanation about using Variational Autoencoders for Molecular structure Generation. By the end of this post you will be able to create your own VAE or moleculare generation.
 In this blog, we will be using **Variational AutoEncoder** for molecular strucuture generation.
 If you don’t know about VAE, please visit <a href="/2019/06/04/All-you-need-to-know-about-Vae.html" target="_blank">VAE</a> to understand  better.<br/>
 

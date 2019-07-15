@@ -7,6 +7,7 @@ comments: True
 mathjax: True
 ---
 >Predicting the causal variants is of one the challenging problems.This blog discusses the model, Basenji which is able to prioritize the causal variants.
+
 <h2> <b> Introduction </b> </h2>
 Human DNA is about 99.5% identical from person to person. However, there are small differences that make each person unique. These differences are called variants. Some of these genetic variants are common, such as the variants for blood types (A, B, AB, or O), while many of the variants are rare, seen in only a few people. And a few among these variants would be associated with the disease risk. And by predicting these disease-associated variants, we would get to know what exactly is driving the disease and could get the right treatment for the disease.
 <br>

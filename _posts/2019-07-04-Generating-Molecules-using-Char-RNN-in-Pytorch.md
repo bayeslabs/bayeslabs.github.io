@@ -30,7 +30,7 @@ Now in this we will learn-
  We’ll train RNN character-level RNN models. That is, we’ll give the RNN a huge chunk of data(Smiles representation of molecules)and ask it to model the 
  probability distribution of the next character in the sequence given a sequence of previous characters. 
  This will then allow us to generate new smiles one character at a time.
- By the way, together with this post I am also releasing (code on Github:<a href="https://github.com/bayeslabs/genmol/tree/Sunita/genmol/CharRNN/">Visit this link</a>) that allows you to train char RNN model based on multi-layer LSTMs.
+ By the way, together with this post I am also releasing (code on Github:<a href="https://github.com/bayeslabs/genmol/tree/master/genmol/CharRNN/">Visit this link</a>) that allows you to train char RNN model based on multi-layer LSTMs.
  
 <b>RNN for Molecules (SMILES) Generation-</b> In this Post, we want to show that recurrent neural networks can be trained as generative models for molecular structures, 
  similar to statistical language models in natural language processing. 
@@ -192,7 +192,7 @@ def init_hidden(self, batch_size):
         return hidden
 ```
 <b>Part 3:</b> 
-We'll declare a function, where we'll define an optimizer(Adam) and loss (cross entropy loss). We then create the training and validation data and initialize the hidden state of the RNN. We'll loop over the training set, each time encoding the data into one-hot vectors, performing forward and backpropagation, and updating the gradients. please for full code visit our Github profile(<a href="https://github.com/bayeslabs/genmol/tree/Sunita/genmol/CharRNN/">please for full code visit our Github profile</a>)
+We'll declare a function, where we'll define an optimizer(Adam) and loss (cross entropy loss). We then create the training and validation data and initialize the hidden state of the RNN. We'll loop over the training set, each time encoding the data into one-hot vectors, performing forward and backpropagation, and updating the gradients. please for full code visit our Github profile(<a href="https://github.com/bayeslabs/genmol/tree/master/genmol/CharRNN/">please for full code visit our Github profile</a>)
 
 we'll have the method generate some loss statistics(training loss and validation loss) to let us know if the model is training correctly.
 Now, we'll just declare the hyper parameters for our model, create an instance for it, and train it!

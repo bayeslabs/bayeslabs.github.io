@@ -2,11 +2,11 @@
 layout: post
 title:  "Objective Reinforced Genarative Adversarial Network(Part II)"
 date: 2019-07-04
-author: haroon_nazir
-excerpt: In this blog we discuss the technicalities of the ORGAN model used to generate molecules with desired propertes.
+author: haroon_nazir 
 comments: True
 mathjax: True
 ---
+>In this blog we discuss the technicalities of the ORGAN model used to generate molecules with desired propertes.
 This blog is in continuation with the <a href = "/2019/07/03/Objective-Reinforced-Generative-Adversarial-Network-(Part-I).html">ORGAN Part I</a>, where I have thoroughly discussed about Generative Adversarial Network(GAN) and ORGAN. So, here I will walk you through the code of ORGAN to give you an overview.
 
 <h3>ORGAN: MODEL</h3>

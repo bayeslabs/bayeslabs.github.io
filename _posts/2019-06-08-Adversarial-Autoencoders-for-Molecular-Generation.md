@@ -6,6 +6,7 @@ date: 2019-06-08
 mathjax: True
 ---
 >This blog discusses about dome pros and cons of Variational Autoencoders, consequently introduces a new method called Adverserial Autoencoders for better generation of molecules.
+
 In my previous two blogs, you see how vae helps to create <a href="/2019/06/05/VAE-Molgen.html#SMILES" target="_blank">SMILES</a>(text generation) of a similar kind.Before coming into the Adversarial Autoencoder lets see some drawbacks of Variational autoencoder(VAE) there are many models which work similarly to the VAE. They also helps us to understand the similar input generation. But what's the difference between VAE and others it they both work on the same things.Why we use other models instead of VAE for similar input generation.<br/>
 
 Today we will see about drawbacks of VAE and how Generative adversarial network and Adversarial autoencoder is better than Variational autoencoder.<br/>

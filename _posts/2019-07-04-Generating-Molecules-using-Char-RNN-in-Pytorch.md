@@ -2,6 +2,8 @@
 layout: post
 title:  "Generating Molecules using CharRNN "
 date: 2019-07-04
+excerpt: "In this blog we will be discussing about RNN's and How the character RNN algorithms can be used in Molecular Structure Generation"
+author: sunita_choudhary
 comments: True
 mathjax: True
 ---

@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Adversarial Autoencoders for Molecular generation"
+author: shubham_patel
+excerpt: "This blog discusses about dome pros and cons of Variational Autoencoders, consequently introduces a new method called Adverserial Autoencoders for better generation of molecules"
 date: 2019-06-08
 mathjax: True
 ---

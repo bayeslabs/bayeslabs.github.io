@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Molecular Structure Generation using VAE"
+author: shubham_patel
+excerpt: "This post gives detailed explanation about using Variational Autoencoders for Molecular structure Generation. By the end of this post you will be able to create your own VAE or moleculare generation"
 date: 2019-06-05
 mathjax: True
 ---
@@ -26,7 +28,7 @@ We will be using RNN in this model because RNN tries to capture the pattern of t
 We use the GRU (Gated Recurrent Unit) model because it aims to solve the vanishing gradient problem, which comes with a standard recurrent neural network.<br/>
 
 *Let's get hands dirty on the code.*<br/>
-for full code <a href="https://github.com/bayeslabs/genmol/tree/shubham/genmol/vae" target="_blank">click</a>
+for full code <a href="https://github.com/bayeslabs/genmol/tree/master/genmol/vae" target="_blank">click</a>
 <a id="Import_dataset"></a>
 **Import dataset**<br/>
 the dataset we used for this purpose is refined from Zinc Database <a href="https://media.githubusercontent.com/media/molecularsets/moses/master/data/dataset_v1.csv" target="_blank">dataset</a><br/>

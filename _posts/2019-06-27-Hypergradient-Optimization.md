@@ -3,10 +3,10 @@ layout: post
 title:  "Hypergradient Optimization"
 date: 2019-06-27
 author: nandan_prince
-excerpt: "A brief introduction about the Hypergradient optimization for Hyperparameter optimization. It considers the relation between parameters and hyperparameters of the model for the better selection of hyperparameters"
 comments: True
 mathjax: True
 ---
+>A brief introduction about the Hypergradient optimization for Hyperparameter optimization. It considers the relation between parameters and hyperparameters of the model for the better selection of hyperparameters.
 <h2>Introduction</h2>
 
 The increasing complexity of machine learning algorithms has driven a large amount of research in the area of hyperparameter optimization(HO). The core idea is to use a validation set to construct a response of the hyperparameters and explore the hyperparameter space to seek the optimum. Early approaches based on grid search quickly become impractical as the number of hyperparameter increases and are even outperformed by random search. Given high computation cost of evaluating the response function, Bayesian optimization approaches provide a natural framework and has been extensively studied. 

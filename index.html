@@ -14,7 +14,7 @@ layout: default
 
        <div>
         {% for tag in post.tags %}
-          <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify: 'pretty' | uri_escape }}" class="post-tag">{{ tag | slugify: 'pretty' }}</a>
+          <a href="{{ site.baseurl }}{{ site.tag_cloud }}#{{ tag | slugify: 'pretty' | uri_escape }}" class="post-tag">{{ tag | slugify: 'pretty' }}</a>
         {% endfor %}
       </div>
 

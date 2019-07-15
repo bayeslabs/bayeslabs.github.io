@@ -3,7 +3,7 @@ layout: post
 title:  "Hypergradient Optimization"
 date: 2019-06-27
 author: nandan_prince
-excerpt: "A brief introduction about the Hypergradient optimization for Hyperparameter optimization"
+excerpt: "A brief introduction about the Hypergradient optimization for Hyperparameter optimization. It considers the relation between parameters and hyperparameters of the model for the better selection of hyperparameters"
 comments: True
 mathjax: True
 ---

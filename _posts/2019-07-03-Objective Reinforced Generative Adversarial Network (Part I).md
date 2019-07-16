@@ -19,8 +19,8 @@ A simple GAN is composed of two neural networks, Generator, and the Discriminato
 
  {%include image.html url="\assets\img\GAN.png" dscription=" GAN Network"%}
 
-Both of these networks work against each other trying to be better at their job by proving the other wrong. Their main objective is to 
-generate data points that are similar to some data points in the training data.
+Both of these networks work against each other trying to prove themselves better through their work. Their main objective is to 
+generate data points that are similar to some data points consisting in the training data.
 Given an initial  training distribution p<sub>data</sub>, the generator G samples x from a distribution p<sub>synth</sub>, generated with random noise z, while a discriminator D looks at samples, either from p(synthetic) or from p<sub>data</sub>, and tries to classify their identity (y) as either real x∈p<sub>data</sub> or fake x∈p<sub>synth</sub>.
 
 The model follows a min-max game where we minimize the Generator function log(1−D(G(z)) so that we can fool the discriminator by generating the samples very close to the original distribution, while maximizing the discriminator function log(D(x)) so that it can classify between fake and real data pints more accurately. 

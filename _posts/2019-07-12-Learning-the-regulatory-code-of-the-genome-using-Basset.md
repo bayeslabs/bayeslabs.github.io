@@ -8,7 +8,7 @@ mathjax: True
 ---
 >Convolutional neural networks are widely used to understand the DNA sequence of data. In this blog, we will be discussing about one such model (Basset model) along with its implementation.
 
-<h2><b>Introduction:</b></h2>
+<h2><b>Origin:</b></h2>
 
 <p>
 Though we know that, most of the diseases comprise of non-coding variants, the mechanisms behind these variants are not known. Here, we address this challenge using a recent machine learning advance - deep convolutional neural networks (CNNs). We have developed a model, Basset to apply CNNs to learn the functional activity of DNA sequences from genomics data.
@@ -19,7 +19,7 @@ ii. clarify the concept learned by the model.
 Thus, Basset provides a powerful computational approach to clarify and elucidate the non-coding genome.
 </p>
 
-<h2><b> Overview: </b></h2>
+<h2><b>Synopsis: </b></h2>
 
 To learn the DNA sequence signals of open versus closed chromatin in these cells, we apply a deep CNN. CNN's perform adaptive attribute extraction to map input data to informative representations during training.<br>
    {% include image.html align="center" url="/assets/img/bassetfull.jpg" %}
@@ -45,7 +45,7 @@ The full architecture of our neural network consists of three convolution layers
 <h4><b>I. Data Preprocessing:</b></h4>
 <p>
  i) First, the DNA sequences are given in the fasta file.<br>
-ii) So, our first would be to perform one-hot encoding of these DNA sequences.</p>
+ii) So, our first task would be to perform one-hot encoding of these DNA sequences.</p>
 
  ```python
 from sklearn.preprocessing import OneHotEncoder
@@ -71,7 +71,7 @@ def one_hot_encoder(my_array):
     
   ```  
 
-<h4><b> II. Defining Model Architecture:</b></h4>
+<h4><b> II. Well defined Model Architecture:</b></h4>
 <p>
 Here we define the model as Basset with three convolution layers and two layers of fully connected hidden nodes. We have even performed Batch normalization for scaling the activations after each convolution layer. The same thing we have also done before the activation layer.</p>
 

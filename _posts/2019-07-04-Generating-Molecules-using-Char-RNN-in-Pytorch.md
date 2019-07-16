@@ -190,9 +190,9 @@ def init_hidden(self, batch_size):
         return hidden
 ```
 <b>Part 3:</b> 
-We'll declare a function, where we'll define an optimizer(Adam) and loss (cross entropy loss). We then create the training and validation data and initialize the hidden state of the RNN. We'll loop over the training set, each time encoding the data into one-hot vectors, performing forward and backpropagation, and updating the gradients. please for full code visit our Github profile(<a href="https://github.com/bayeslabs/genmol/tree/master/genmol/CharRNN/">please for full code visit our Github profile</a>)
+We'll declare a function, where we'll define an optimizer(Adam) and loss (cross entropy loss). We will then proceed with the training and validation data and initialize the hidden state of the RNN. We'll loop over the training set, each time encoding the data into one-hot vectors.We will perform forwarding and backpropagation and update the gradients. Please for full closure of the code, visit our Github profile(<a href="https://github.com/bayeslabs/genmol/tree/master/genmol/CharRNN/">please for full code visit our Github profile</a>)
 
-we'll have the method generate some loss statistics(training loss and validation loss) to let us know if the model is training correctly.
+We'll have the method generate some loss statistics(training loss and validation loss) to let us know if the model is training correctly.
 Now, we'll just declare the hyper parameters for our model, create an instance for it, and train it!
 ```python
 n_hidden=56
@@ -206,8 +206,8 @@ n_epochs = 1
 train the modeltrain(net, encoded, epochs=n_epochs, batch_size=batch_size, seq_length=seq_length, lr=0.001,print_every=10000)
 ```
 <b> Part 4:The prediction task </b>
-The input to the model will be a sequence of characters(smiles), and we train the model to predict the output - Since RNN's maintain an internal state that depends on the previously seen elements, given all the characters computed until this moment, what is the next character?After training, we'll create a method (function) to predict the next character from the trained RNN with forward propagation.''' Given a character, predict the next character.
- Returns the predicted character and the hidden state.
+The input to the model will be a sequence of characters(smiles), and we train the model to predict the output - Since RNN's maintain an internal state that depends on the previously seen elements, given all the characters computed until this moment, what is the next character? After training, we'll create a method (function) to predict the next character from the trained RNN with forward propagation.''' Given a character, predict the next character.
+Returns the predicted character and the hidden state.
  ```python
  def predict(net, char, h=None, top_k=None):
         # tensor inputs

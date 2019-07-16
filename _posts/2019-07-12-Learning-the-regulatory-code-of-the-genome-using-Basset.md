@@ -6,31 +6,31 @@ author : muni_nihitha
 comments: True
 mathjax: True
 ---
->Convolutional neural networks are being widely used in understanding the DNA sequence data. In this blog we will be discussing one of such models(Basset model) along with its implementation.
+>Convolutional neural networks are widely used to understand the DNA sequence of data. In this blog, we will be discussing about one such model (Basset model) along with its implementation.
 
 <h2><b>Introduction:</b></h2>
 
 <p>
-Though we know that , most of the diseases are constituted by the non-coding variants, the mechanisms behind these variants are not known. Here, we address this challenge using an approach based on a recent machine learning advance - deep convolutional neural networks (CNNs). We developed a model, Basset to apply CNNs to learn the functional activity of DNA sequences from genomics data.
+Though we know that, most of the diseases comprise of non-coding variants, the mechanisms behind these variants are not known. Here, we address this challenge using a recent machine learning advance - deep convolutional neural networks (CNNs). We have developed a model, Basset to apply CNNs to learn the functional activity of DNA sequences from genomics data.
 <br>
-Our model , Basset would be able to:
-i. learn the cell-specific regulatory code of the chromatin accessibility
-ii. annotate the principles learned by the model.
-Thus, Basset offers a powerful computational approach to annotate and interpret the non-coding genome.
+Our model Basset has certain characteristics which are termed systematically:
+i.study the cell-specific regulatory code of the chromatin accessibility
+ii. clarify the concept learned by the model.
+Thus, Basset provides a powerful computational approach to clarify and elucidate the non-coding genome.
 </p>
 
 <h2><b> Overview: </b></h2>
 
-To learn the DNA sequence signals of open versus closed chromatin in these cells, we apply a deep CNN. CNN's perform adaptive feature extraction to map input data to informative representations during training.<br>
+To learn the DNA sequence signals of open versus closed chromatin in these cells, we apply a deep CNN. CNN's perform adaptive attribute extraction to map input data to informative representations during training.<br>
    {% include image.html align="center" url="/assets/img/bassetfull.jpg" %}
 
 <h3><b>Convolution layers:</b></h3> 
 <p>
-The first convolution layer operates directly on the one-hot coding of the input sequence of length 600 bp. It optimizes the weights of set of position weight matrices (PWMs). These PWM filters search for the relevant patterns along the sequence and outputs a matrix with a row for every filter and a column for every position in the sequence. And the subsequent convolution layers consider the orientations and spatial distances between patterns recognized in the previous layer.
+The first convolution layer operates directly on the one-hot coding of the input sequence of length 600 bp. It optimizes the weights of the set of position weight matrices (PWMs). These PWM filters search for the relevant patterns along the sequence and output a matrix with a row for every filter and a column for every position in the sequence. And the subsequent convolution layers consider the orientations and spatial distances between patterns recognized in the previous layer.
 <br>
-We apply a ReLU activation function after each convolution layer to obtain a more expressive model. Because, computing non-linear functions of the information flowing through the network gives more expressive models.
+We apply a ReLU activation function after each convolution layer to obtain a more expressive model. This is done since computing non-linear functions of the information flowing through the network give more expressive models.
 <br>
-Then we perform the Max Pooling, which reduces the dimension of the input and so the computation in the next layers also decreases. It also provides in-variance to small sequence shifts to the left or right. That is, even if the sequence is slightly shifted to either left or right, it makes the model independent of this behavior.
+Then we perform the Max Pooling. It reduces the dimension of the input and so the computation in the next layers also decreases. It also provides in-variance to small sequence shifts to the left or right. In short, even if the sequence is slightly shifted to the left or right the model remains independent of this behavior.
 </p>
 
 <h3><b>Fully Connected Layers:</b></h3> 
@@ -39,13 +39,13 @@ Then we perform the Max Pooling, which reduces the dimension of the input and so
 <h3><b>Prediction layer:</b></h3> 
 <p>The output of the fully connected layers is fed as input to the final layer and the Sigmoid activation is applied.The final layer outputs 164 predictions for the probability that the sequence is accessible in each of the 164 cell types.
 <br>
-The full architecture of our neural network includes three convolution layers and two layers of fully connected hidden nodes.
+The full architecture of our neural network consists of three convolution layers and two are completely layers of fully connected hidden nodes.
 <br></p>
 <h3><b>Implementation:</b></h3>
 <h4><b>I. Data Preprocessing:</b></h4>
 <p>
  i) First, the DNA sequences are given in the fasta file.<br>
-ii) So, we first have to perform the one-hot encoding of these DNA sequences.</p>
+ii) So, our first would be to perform one-hot encoding of these DNA sequences.</p>
 
  ```python
 from sklearn.preprocessing import OneHotEncoder
@@ -73,7 +73,7 @@ def one_hot_encoder(my_array):
 
 <h4><b> II. Defining Model Architecture:</b></h4>
 <p>
-Here we define the model as Basset with three convolution layers and two layers of fully connected hidden nodes. We even performed Batch normalization for scaling the activations after each convolution layer and before the activation layer.</p>
+Here we define the model as Basset with three convolution layers and two layers of fully connected hidden nodes. We have even performed Batch normalization for scaling the activations after each convolution layer. The same thing we have also done before the activation layer.</p>
 
  ```python 
 def get_model(load_weights = True):
@@ -107,7 +107,7 @@ def get_model(load_weights = True):
   This model is trained on the DNA-seq data sets of 164 cell types which is found in the Road Map and ENCODE Consortium.
 
 <h4><b>IV. Testing:</b></h4>
- For testing, we provide the model with a sample sequence of length 600bp and the model makes the predictions for the DNA accessibility of 164 cell-types.
+ For testing, we provide the model with a sample sequence of length 600bp the .The model is also known to make predictions for the DNA accessibility of 164 cell-types.
  
  ```python
 test_sequence='TTTGTGGGAGACTATTCCTCCCATCTGCAACAGCTGCCCCTGCTGACTGCCCTTCTCTCCTCCCTCTCGCCTCAGGTCCAGTCTCTAAAAATATCTCAGGAGGCTGCAGTGGCTGACCATTGCCTTGGACCGCTCTTGGCAGTCGAAGAAGATTCTCCTGTCAGTTTGAGCTGGGTGAGCTTAGAGAGGAAAGCTCCACTATGGCTCCCAAACCAGGAAGGAGCCATAGCCCAGGCAGGAGGGCTGAGGACCTCTGGTGGCGGCCCAGGGCTTCCAGCATGTGCCCTAGGGGAAGCAGGGGCCAGCTGGCAAGAGCAGGGGGTGGGCAGAAAGCACCCGGTGGACTCAGGGCTGGAGGGGAGGAGGCGATCCCAGAGAAACAGGTCAGCTGGGAGCTTCTGCCCCCACTGCCTAGGGACCAACAGGGGCAGGAGGCAGTCACTGACCCCGAGACGTTTGCATCCTGCACAGCTAGAGATCCTTTATTAAAAGCACACTGTTGGTTTCTGCTCAGTTCTTTATTGATTGGTGTGCCGTTTTCTCTGGAAGCCTCTTAAGAACACAGTGGCGCAGGCTGGGTGGAGCCGTCCCCCCATGGAG'
@@ -124,7 +124,7 @@ print(out)
 ```
 
 
-Here, we need to first, one-hot encode the test sequence and  then reshape the numpy array such that it is compatible with the shape of the input for the model and feed it to the model for the model to make predictions of the DNA accessibility.
+Here, first wee need to one-hot encode the test sequence and then reshape the numpy array. Thus it becomes compatible with the shape of the input for the model and feeds it to the model. It thus makes room for the model on making predictions of the DNA accessibility.
 
 <h2><b>Summary:</b></h2>
-Given a SNP pair, by these predicted chromatin accessibility values, we can calculate the difference between the accessibilities of the variants in the two alleles and this difference can be ranked which could be useful for predicting the causal variants. 
+Given an SNP pair, by these predicted chromatin accessibility values, we can calculate the difference between the accessibilities of the variants in the two alleles. The difference can be ranked which could be useful for predicting the causal variants. 

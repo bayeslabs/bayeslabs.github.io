@@ -23,7 +23,7 @@ Both of these networks work against each other trying to prove themselves better
 generate data points that are similar to some data points consisting in the training data.
 Given an initial  training distribution p<sub>data</sub>, the generator G samples x from a distribution p<sub>synth</sub>, generated with random noise z, while a discriminator D looks at samples, either from p(synthetic) or from p<sub>data</sub>, and tries to classify their identity (y) as either real x∈p<sub>data</sub> or fake x∈p<sub>synth</sub>.
 
-The model follows a min-max game where we minimize the Generator function log(1−D(G(z)) so that we can fool the discriminator by generating the samples very close to the original distribution, while maximizing the discriminator function log(D(x)) so that it can classify between fake and real data pints more accurately. 
+The model follows a min-max game where we minimize the Generator function log(1−D(G(z)) so that we can fool the discriminator by generating the samples very close to the original distribution, while maximizing the discriminator function log(D(x)) so that it can classify between fake and real data points more accurately. 
 <ul>
   <li>For a single data point we have: </li>
         $min_G  max_D  [\log D(x)] + z∼ p_{synthetic z} [ \log (1−D(G(z)))]$.
@@ -32,14 +32,14 @@ The model follows a min-max game where we minimize the Generator function log(1�
  where E is Expectation.
 </ul>
 <h3>Training a GAN</h3>
-Training a GAN is still a great topic of research. But various problems have limited the power of GAN and its stability. Another Stability of GAN while training is also a major roadblock. If you start to train a GAN and the discriminator part is much powerful than its generator counterpart, the generator would fail to train effectively. This will, in turn, affect the training of your GAN. On the other hand, if the discriminator is too lenient; it would literally let any image to be generated. Thus this whole idea will remain useless for your GAN. 
+Training a GAN is still a great topic of research. But various problems have limited the power of GAN and its stability. Another stability of GAN while training is also a major roadblock. If you start to train a GAN, you will realise that the discriminator part is more powerful than its generator counterpart. Thus, the generator would fail to train effectively. This will in turn result a huge loss in the process of training your GAN .On the contrary, if the discriminator is too lenient; it would literally allow any image to be generated. Thus this whole idea will remain useless for your GAN. 
 
 The training has two phases.
 <ol>
   <li><b>Discriminator Training</b></li>
-  We train the Discriminator on the labeled Training set for a certain epoch range. It must be trained well enough that it can discriminate the training data correctly as real(1). This is achieved by varying the number of epochs.
+  We train the Discriminator on the labeled Training set for a certain epoch range. It must be trained that way that it can discriminate the training data correctly as real(1). This is achieved by varying the number of epochs.
   While training Discriminator, the Generator is in freeze mode(freezing means setting training as false. The network does only forward pass and no back-propagation is applied).
-  Afterward, we generate fake data and train the discriminator on it as well, until it predicts efficiently.
+  Afterward, we generate fake data and train the discriminator till it predicts efficiently.
   Calculate the loss and optimize the network parameters and update the gradients.
   <li><b>Generator Training</b></li>
   Now to train the Generator, we use the predictions of discriminator as an objective to train the Generator.

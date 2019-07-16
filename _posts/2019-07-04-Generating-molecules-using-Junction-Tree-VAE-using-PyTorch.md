@@ -6,20 +6,20 @@ date: 2019-06-27
 comments: True
 mathjax: True
 ---
->Representation of Molecules can be done in the form of graphs. To existing generative models on graph datastructures on graph datastructures we need better algorithms. Junction Tree VAE helps to address this issue and creates netter molecular graphs.
+>Representation of Molecules can be done in the form of graphs. To existing generative models on graph data structures on graph data structures, we need better algorithms. Junction Tree VAE helps to address this issue and creates better molecular graphs.
 
-<h2>Introduction</h2>
-Molecular structure generation is one of the major part of material or drug discovery.This task involves continuous embedding and generation of molecular graphs.
+<h2>Brief introduction</h2>
+Molecular structure generation is one of the major parts of a material or drug discovery. This task involves continuous embedding and generation of molecular graphs.
 Our junction tree variational autoencoder generates molecular graphs in two phases:<br>
-(i)First generating a tree-structured scaffold over chemical substructures<br>
-(ii)Combining them into a molecule with a graph message passing network.
+(i)First, generating a tree-structured scaffold over chemical substructures<br>
+(ii)Combining them into a molecule with a graph message-passing network.
 
-<h2>Overview</h2>
+<h2>Synopsis</h2>
 A molecular graph G is first decomposed into its junction tree T<sub>G</sub>, where each coloured node in the tree represents a substructure in the molecule.We then encode both the tree and graph into their latent embeddings z<sub>T</sub> and z<sub>G</sub>. To decode the molecule, we first reconstruct junction
 tree from z<sub>T</sub> , and then assemble nodes in the tree back to the original molecule.
 <center>{%include image.html url="\assets\img\jvae_1.png" %}</center>
 <h2>Implementation</h2>
-I'll be showing you how I built my Junction tree VAE in Pytorch. The dataset I used is ZINC dataset.The dataset contains smiles representation of molecules.I have used RDKit to process the molecules.
+I'll be showing you how I built my Junction tree VAE in Pytorch. The dataset I used is ZINC dataset.The dataset contains smiles representation of molecules.I have also used RDKit to process the molecules.
 <h3>I.Data Preprocessing</h3>
 (i)Import the text file into our code.
 
@@ -28,7 +28,7 @@ with open('train.txt') as f:
     data = [line.strip("\r\n ").split()[0] for line in f]
 ```
 
-(ii)Convert each molecule to a Molecular tree.First we have to decompose the molecule to a tree.
+(ii)Convert each molecule to a Molecular tree. First, we have to decompose the molecule to a tree.
 
 <h4>Tree Decomposition of Molecules:</h4>
 A tree decomposition maps a graph G into a junction tree by contracting certain vertices into a single node so that G becomes cycle-free.
@@ -37,11 +37,11 @@ is E.Here X is vocabulary contains only cycles (rings) and single edges.
 
 We first find simple cycles of given graph G, and its edges not belonging to any cycles.
 
-Two simple rings are merged together if they have more than two overlapping atoms. Each of those cycles or edges is considered as a 
+Two simple rings are merged if they have more than two overlapping atoms. Each of those cycles or edges is considered as a 
 cluster(clique).
 
-Here cliques are nothing but the clusters.We will check the length of the clique and if it is more than 2 then we will check for the set of
-intersection atoms in the neighbourhood list of the cluster and if intersection atom list is more than 2 we will merge them.
+Here cliques are nothing but the clusters. We will check the length of the clique and if it is more than 2, then we will check for the set of
+intersection atoms in the neighborhood list of the cluster. If the intersection atom list is more than 2 we will merge them.
 
 ```python
     for i in range(len(cliques)):
@@ -65,7 +65,7 @@ intersection atoms in the neighbourhood list of the cluster and if intersection 
 Next, a cluster graph is constructed by adding edges between all intersecting clusters. Finally, we select one of its spanning trees as the 
 junction tree of G.
 
-Here csr_matrix is creating sparse matrix with given number of rows and columns and minumum_spanning_tree is an inbuilt from scipy module to 
+Here csr_matrix is creating a sparse matrix with a given number of rows and columns and minumum_spanning_tree is an inbuilt from scipy module to 
 get the minimum spanning tree.
 
 ```python
@@ -75,10 +75,10 @@ get the minimum spanning tree.
     junc_tree = minimum_spanning_tree(clique_graph)
 ```
 
-Now,after collecting cliques and edges from tree decomposition,we construct molecular tree using those cliques and edges.
+Now, after collecting cliques and edges from tree decomposition, we construct a molecular tree using those cliques and edges.
 
 <h3>II.Defining the model</h3>
-Here we define our model as JTNNVAE.
+Here we illustrate our model as JTNNVAE.
 
 ```python
 class JTNNVAE(nn.Module):
@@ -104,16 +104,16 @@ class JTNNVAE(nn.Module):
         self.G_var = nn.Linear(int(hidden_size), int(latent_size))        
 ```
 <h3>III.Training</h3>
-As we have already seen in the overview,first we have to encode the graph and then tree and then decode the tree and then finally decode 
-the graph.
+As we have already seen in the synopsis,first we have to encode the graph and then tree and then decode the tree and then finally decode 
+the graph.This will help us to make our work easy.
 <h4>Graph Encoder:</h4>
 
-(i) We encode the latent representation of G by a graph message passing network<br>
+(i) We encode the latent representation of G by a graph message-passing network<br>.
 (ii)Each vertex v has a feature vector x<sub>v</sub> indicating the atom type, valence, and other properties. Similarly, each edge (u, v) ∈ E has a 
 feature vector x<sub>uv</sub> indicating its bond type, and two hidden vectors ν<sub>uv</sub> and ν<sub>vu</sub> denoting the message from u to v and vice versa.
 
-Here a1,a2 are two atoms having bond.We get atom features from atom_features1.We also get bond features from bond_features1 function and we
-concatenate them to existing dimension of atom.
+Here a1,a2 are two atoms having a bond. We get atom features from atom_features1. We also get bond features from bond_features1 function and we
+concatenate them to an existing dimension of the atom.
 
 ```python  
             for atom in mol.GetAtoms():
@@ -145,7 +145,7 @@ concatenate them to existing dimension of atom.
 <h4>Tree Encoder:</h4>
 (i) We similarly encode T<sub>G</sub> with a tree message passing network.
 
-We construct a node graph and message graph.Node graph contains the information that what are the messages connected to a index and message
+We construct a node graph and message graph.Node graph contains the information that's where the messages are connected to a index. The message
 graph contain information that which message is in the invert direction.
 
 ```python
@@ -167,9 +167,8 @@ We decode a junction tree T from its encoding z<sub>T</sub> with a tree structur
 and generates nodes in their depth-first order.<br>
 <center>{%include image.html url="\assets\img\jvae_2.png" description="Tree Decoding Process" %}</center>
 
-For every visited node, the decoder first makes a topological prediction,whether this node has children to be generated. When a new child 
-node is created, we predict its label and recurse this process.The decoder backtracks when a node has no more children to generate.Here we 
-decode our tree and assemble the nodes in depth first order.
+For every visited node, the decoder first makes a topological prediction whether this node has children to be generated. When a new child node is created, we predict its label and recurse this process. The decoder backtracks when a node has no more children to generate. Here we 
+decode our tree and assemble the nodes in depth-first order.
 
 <h4>Graph Decoder:</h4>
 (i) The final step of our model is to reproduce a molecular graph G that underlies the predicted junction tree T.<br>
@@ -181,7 +180,7 @@ decode our tree and assemble the nodes in depth first order.
 After training is done, save the model using torch.save().
 
 <h3>IV.Generating sample molecules</h3>
-This is how we sample the new molecules.First load the saved model and the generate the new text using sample_prior() function.
+This is how we sample new molecules. First, load the saved model and generate the new text using sample_prior() function.
 ```python
     model.load_state_dict(torch.load(path))
     torch.manual_seed(0)

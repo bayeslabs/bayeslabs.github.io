@@ -6,7 +6,7 @@ date: 2019-06-27
 comments: True
 mathjax: True
 ---
->Representation of Molecules can be done in the form of graphs. To existing generative models on graph data structures on graph data structures, we need better algorithms. Junction Tree VAE helps to address this issue and creates better molecular graphs.
+>Representation of Molecules can be done in the form of graphs. To existing generative models on graph data structures, we need better algorithms. Junction Tree VAE helps to address this issue and creates better molecular graphs.
 
 <h2>Brief introduction</h2>
 Molecular structure generation is one of the major parts of a material or drug discovery. This task involves continuous embedding and generation of molecular graphs.

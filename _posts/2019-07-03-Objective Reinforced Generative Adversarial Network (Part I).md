@@ -8,7 +8,6 @@ mathjax: True
 ---
 >Finding the Lead Molecule in a Drug Discovery pipeline is one of the most challenging processes. Thousands of molecules are screened and tested. This process is time-consuming and very important and so this blog discusses a deep generative model that tries to overcome these challenges.
 
-<h2>Beggining</h2>
 <b>Objective-Reinforced Generative Adversarial Network (ORGAN)</b> is a modified version of a primary Generative Adversarial Network (GAN). 
 Before we dig deeper into theory and implementation of ORGAN, let me brief you about the basics of GAN. 
 A simple GAN is composed of two neural networks, Generator, and the Discriminator.

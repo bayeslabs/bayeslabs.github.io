@@ -6,11 +6,11 @@ author: sunita_choudhary
 comments: True
 mathjax: True
 ---
->In this blog we will be discussing about RNN's and How the character RNN algorithms can be used in Molecular Structure Generation.
+>In this blog we are going to discuss about RNN's and How the character RNN algorithms can be used in Molecular Structure Generation.
 
-Before you dig into details of Recurrent Neural networks, if you are a Beginner I suggest you to read about RNN.
-Note: To go through the article, you must have basic knowledge of neural networks and how Pytorch (a deep learning library) works. 
-You can refer the some articles to understand these concepts:
+Before we go deeper into the details of Recurrent Neural networks, lets just go through some methods and procedures about RNN.
+Note: When you are going through the article,it is important for you to have basic knowledge of neural networks and how Pytorch (a deep learning library) works. 
+You can also refer to  some other articles to understand these concepts in broader sense:
 In this post ,I am implementing a RNN model with Pytorch to generate SMILES.
 
 Now in this we will learn-
@@ -20,29 +20,28 @@ Now in this we will learn-
  <li>RNN for Molecules (SMILES) Generation</li>
  <li>Generating SMILES using RNN's</li>
  </ol>
- <b>Recurrent Neural Networks-</b>The idea behind RNN's is to make use of sequential information. 
- RNN's are used for sequential data, like audio or sentences, where the order of the data plays an important role.
- What makes Recurrent Networks so special? The core reason that recurrent nets are more exciting is that they allow us to operate over sequences of vectors:
+ <b>Recurrent Neural Networks-</b>The idea behind RNN's is to make use of sequential information.Here the order of the data plays an important role, like audio or sentences.
+ What makes Recurrent Networks so special?
+ They allow us to operate over sequences of vectors and this thing gives importance:
    {% include image.html url="/assets/img/1rnn.png" description="Unrolled RNN Architecture" %}
    
  <b>Character-Level RNN Model:</b> Okay, so we have an idea about what RNNs are, why they are super exciting, and how they work. We’ll now ground this in a fun application: 
- We’ll train RNN character-level RNN models. That is, we’ll give the RNN a huge chunk of data(Smiles representation of molecules)and ask it to model the 
- probability distribution of the next character in the sequence given a sequence of previous characters. 
- This will then allow us to generate new smiles one character at a time.
+ We’ll train RNN character-level RNN models. That is, we’ll give the RNN a huge chunk of data(Smiles representation of molecules)and ask it to model the probability distribution of the next character in the sequence given a sequence of previous characters. 
+ This will only allow us to generate new smiles and one character at a time.
  By the way, together with this post I am also releasing (code on Github:<a href="https://github.com/bayeslabs/genmol/tree/master/genmol/CharRNN/">Visit this link</a>) that allows you to train char RNN model based on multi-layer LSTMs.
  
-<b>RNN for Molecules (SMILES) Generation-</b> In this Post, we want to show that recurrent neural networks can be trained as generative models for molecular structures, 
- similar to statistical language models in natural language processing. 
- We demonstrate that the properties of the generated molecules correlate very well with the properties of the molecules used to train the model.
+<b>RNN for Molecules (SMILES) Generation-</b> In this Post, we want to show that recurrent neural networks can be trained as generative models for molecular structures. 
+It is similar to statistical language models in natural language processing. 
+We demonstrate that the properties of the generated molecules correlate very well with the properties of the molecules used to train the model.
 To connect chemistry with language, it is important to understand how molecules are represented. Usually, they are modeled by molecular graphs, also called Lewis structures in chemistry. In molecular graphs, atoms are labeled nodes. The edges are the bonds between atoms, which are labeled with the bond order (e.g., single, double, or triple).
 
-However, in models for natural language processing, the input and output of the model are usually sequences of single letters, strings or words. We therefore employ the SMILES (Simplified Molecular Input Line Entry System) format are the type of chemical notation that helps us to represent molecules and easy to used by the computers. It is a simple string representation of molecules, which encodes molecular graphs compactly as human-readable strings. SMILES is a formal grammar which describes molecules with an alphabet of characters, for example c and C for aromatic and aliphatic carbon atoms, O for oxygen, and −, =, and # for single, double, and triple bonds (see Figure 2).To indicate rings, a number is introduced at the two atoms where the ring is closed. For example, benzene in aromatic SMILES notation would be c1ccccc1.
-{%include image.html url="/assets/img/smiles.png" description="Examples of molecule and It's SMILES representation. To correctly create smiles, the model has to learn long-term dependencies, for example, to close rings (indicated by numbers) and brackets." %}
+However, in models for natural language processing, the input and output of the model are usually sequences of single letters, strings or words.Therefore we employ the SMILES (Simplified Molecular Input Line Entry System) format.This pattern are the type of chemical notation that helps us to represent molecules. They can also be used by computers easily. It is a simple string representation of molecules which encodes molecular graphs compactly as human-readable strings. SMILES is a formal grammar which describes molecules with an alphabet of characters, for example c and C for aromatic and aliphatic carbon atoms, O for oxygen, and −, =, and # for single, double, and triple bonds (see Figure 2).To indicate rings, a number is introduced at the two atoms where the ring is closed. For example, benzene in aromatic SMILES notation would be c1ccccc1.
+{%include image.html url="/assets/img/smiles.png" description="Examples of molecule and It's SMILES representation. To correctly create smiles, the model has to learn long-term dependencies. For example, to close rings (indicated by numbers) and brackets." %}
 
 
-<b>Generating SMILES using RNN's:</b>  I'll be showing you how I implemented my recurrent neural network in Pytorch. I trained it using the ChEMBL smiles Dataset ,which contains 2M smiles,and it is a manually curated database of bio-active drug-like molecules.
+<b>Generating SMILES using RNN's:</b>  I'll be showing you how I implemented my recurrent neural network in Pytorch. I trained it using the ChEMBL smiles Dataset ,which contains 2M smiles and it is a manually curated database of bio-active drug-like molecules.
 
- <b> Part 1: Importing libraries and data preprocessing -</b> First, we import <b>pytorch</b>, the deep learning library we'll be using,also <b>import nn </b> (pytorch's neural network library) and <b>torch.nn.functional</b>, which includes non-linear functions like ReLu and sigmoid.
+<b> Part 1: Importing libraries and data preprocessing -</b> First, we import <b>pytorch</b>, the deep learning library we'll be using.Also <b>import nn </b> (pytorch's neural network library) and <b>torch.nn.functional</b>, which includes non-linear functions like ReLu and sigmoid.
  
 Let's load the Data file and name it as text
 
@@ -81,7 +80,7 @@ def one_hot_encode(arr, n_labels):
     
     return one_hot
 ```
-we will usually want to feed training data in batches to speed up the training process,so defining method to make mini-batches for training.
+We will usually want to feed training data in batches to speed up the training process,so defining method to make mini-batches for training.
 ```python
 def get_batches(arr, batch_size, seq_length):
     '''Create a generator that returns batches of size
@@ -116,7 +115,7 @@ def get_batches(arr, batch_size, seq_length):
         yield x, y
 ```
 <b>Part 2: Building the Model</b> 
-First, we're going to check if we can train using the <b>GPU</b>, which will make the training process <b>much quicker</b>. If you don't have a GPU, be forewarned that it will take a much longer time to train. Check out Google Collaboratory or other cloud computing services!
+First, we're going to check if we can train using the <b>GPU</b>, which will make the training process <b>much quicker</b>. If you don't have a GPU, be ready to witness the more time taken by it. Check out Google Collaboratory or other cloud computing services!
 ```python
 # Check if GPU is available
 train_on_gpu = torch.cuda.is_available()
@@ -191,9 +190,9 @@ def init_hidden(self, batch_size):
         return hidden
 ```
 <b>Part 3:</b> 
-We'll declare a function, where we'll define an optimizer(Adam) and loss (cross entropy loss). We then create the training and validation data and initialize the hidden state of the RNN. We'll loop over the training set, each time encoding the data into one-hot vectors, performing forward and backpropagation, and updating the gradients. please for full code visit our Github profile(<a href="https://github.com/bayeslabs/genmol/tree/master/genmol/CharRNN/">please for full code visit our Github profile</a>)
+We'll declare a function, where we'll define an optimizer(Adam) and loss (cross entropy loss). We will then proceed with the training and validation data and initialize the hidden state of the RNN. We'll loop over the training set, each time encoding the data into one-hot vectors.We will perform forwarding and backpropagation and update the gradients. Please for full closure of the code, visit our Github profile(<a href="https://github.com/bayeslabs/genmol/tree/master/genmol/CharRNN/">please for full code visit our Github profile</a>)
 
-we'll have the method generate some loss statistics(training loss and validation loss) to let us know if the model is training correctly.
+We'll have the method generate some loss statistics(training loss and validation loss) to let us know if the model is training correctly.
 Now, we'll just declare the hyper parameters for our model, create an instance for it, and train it!
 ```python
 n_hidden=56
@@ -207,8 +206,8 @@ n_epochs = 1
 train the modeltrain(net, encoded, epochs=n_epochs, batch_size=batch_size, seq_length=seq_length, lr=0.001,print_every=10000)
 ```
 <b> Part 4:The prediction task </b>
-The input to the model will be a sequence of characters(smiles), and we train the model to predict the output - Since RNN's maintain an internal state that depends on the previously seen elements, given all the characters computed until this moment, what is the next character?After training, we'll create a method (function) to predict the next character from the trained RNN with forward propagation.''' Given a character, predict the next character.
- Returns the predicted character and the hidden state.
+The input to the model will be a sequence of characters(smiles), and we train the model to predict the output - Since RNN's maintain an internal state that depends on the previously seen elements, given all the characters computed until this moment, what is the next character? After training, we'll create a method (function) to predict the next character from the trained RNN with forward propagation.''' Given a character, predict the next character.
+Returns the predicted character and the hidden state.
  ```python
  def predict(net, char, h=None, top_k=None):
         # tensor inputs

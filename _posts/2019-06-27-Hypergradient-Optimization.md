@@ -6,21 +6,21 @@ author: nandan_prince
 comments: True
 mathjax: True
 ---
->A brief introduction about the Hypergradient optimization for Hyperparameter optimization. It considers the relation between parameters and hyperparameters of the model for the better selection of hyperparameters.
+>A brief introduction about the Hypergradient optimization for Hyperparameter optimization. It is considered as the relation between parameters and hyperparameters of the model for the better selection of hyperparameters.
 
-<h2>Introduction</h2>
+<h2>A small intro</h2>
 
-The increasing complexity of machine learning algorithms has driven a large amount of research in the area of hyperparameter optimization(HO). The core idea is to use a validation set to construct a response of the hyperparameters and explore the hyperparameter space to seek the optimum. Early approaches based on grid search quickly become impractical as the number of hyperparameter increases and are even outperformed by random search. Given high computation cost of evaluating the response function, Bayesian optimization approaches provide a natural framework and has been extensively studied. 
+The increasing complexity of machine learning algorithms has driven a large amount of research in the area of hyperparameter optimization(HO). The core idea is to use a validation set to construct a response of the hyperparameters and explore the hyperparameter space to seek the optimum. Early approaches based on grid search is quickly becoming impractical.It is so because the number of hyperparameter is increasing and are even outperformed by random search. Given high computation cost of evaluating the response function, Bayesian optimization approaches provide a natural framework and has been extensively studied. 
 Here we'll discuss an alternative approach where gradient-based algorithms are used to optimize the performance on a validation set with respect to hyperparameters. The validation error should be evaluated at a minimizer of the training objective.
 
-To understand any of the approach stated above, let's first understand what the actual problem of optimization is, let's try to reach at a mathematical expression of the problem. 
+To understand any of the approach stated above, let's first understand what the actual problem of optimization is. Let's try to reach at the beggining, which is mathematical expression of the problem. 
 We focus on training procedures based on the optimization of an objective function $L$ with respect to $w$ (e.g. the regularized average training loss for the neural nets with weights $w$). We see the training procedure by stochastic gradient descent (or one of its variants like momentum, RMSProp, Adam, etc.) as a dynamical system with a state $s_t$ $\in$ $R^d$ that collects weights and possible accessory variables. The dynamics are defined by the system of equations: 
 
 $$ s_t = \Phi_t(s_{t-1}, \lambda),    t = 1,...,T $$
 
-where $T$ is the number of itterations, $s_0$ contains initial weights and initial accessory variables and $t \in {1,...,T}$ is the $t$-th step of the optimization algorithm,i.e. on mini-batch $t$. Finally, $\lambda$ $\in$ $R^m$ is the vector of hyperparameters that we wish to tune.
+where $T$ is the number of itterations, $s_0$ contains initial weights and initial accessory variables and $t \in {1,...,T}$ is the $t$- step of the optimization algorithm,i.e. on mini-batch $t$. Finally, $\lambda$ $\in$ $R^m$ is the vector of hyperparameters that we wish to tune.
  
-let's take a simple example training a neural network by gradient descent with momentum(GDM), in which case $s_t = (v_t, w_t)$ and, 
+Let's also take a simple example like training a neural network by gradient descent with momentum(GDM), in which case $s_t = (v_t, w_t)$ and, 
 
 
 $$v_t = \mu v_{t-1} + \nabla J_t(w_{t-1})$$
@@ -32,7 +32,7 @@ Here $s_1,...,s_T$ implicitly depend on the vector of hyperparameter $\lambda$. 
 $$ \min{\lambda \in \Lambda} f(\lambda)$$
 where the set $\Lambda$ incorporates constraints on the hyperparameters, and the response function $f$ is defined at $\lambda$ as 
 $ f(\lambda) = \textit{E}(s_T(\lambda))\$.
-Now to minimize $f$($\lambda$) we first have to compute the gradient of $f(\lambda)$(or hypergradient) with respect to $\lambda$, which can be computed by chain rule,
+Now, to minimize $f$($\lambda$) we first have to compute the gradient of $f(\lambda)$(or hypergradient) with respect to $\lambda$, which can be computed by chain rule,
 
 $$\nabla f(\lambda) = \nabla E(s_T) \frac{ds_T}{d\lambda}$$
 
